@@ -1,0 +1,47 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.12'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.objectia'
+version = '0.0.1-SNAPSHOT'
+
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Spring Boot starters
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+//	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:3.1.4'
+//	implementation("org.togglz:togglz-spring-boot-starter:3.1.2")
+//	implementation 'org.togglz:togglz-console:3.1.2'
+
+	// Database and ORM dependencies
+	runtimeOnly 'org.postgresql:postgresql'
+	implementation 'org.modelmapper:modelmapper:2.4.4'
+
+	// Lombok for reducing boilerplate code
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// Testing dependencies
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+//	// Springdoc OpenAPI for Swagger integration
+//	implementation 'org.springdoc:springdoc-openapi-ui:1.6.15'
+
+	// Hibernate Envers for auditing
+	implementation 'org.hibernate:hibernate-envers:5.5.6.Final'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

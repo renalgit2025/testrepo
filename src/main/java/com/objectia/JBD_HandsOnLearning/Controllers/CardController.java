@@ -5,6 +5,7 @@ import com.objectia.JBD_HandsOnLearning.DTO.FindByCvvDTO;
 import com.objectia.JBD_HandsOnLearning.models.Card;
 import com.objectia.JBD_HandsOnLearning.services.CardService;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("card-controller")
+@Slf4j
 public class CardController {
     @Autowired
     CardService cardService;
@@ -28,6 +30,7 @@ public class CardController {
    @PostMapping("/create-card")
     public ResponseEntity<Card> createCard() {
 //       if (featureManager.isActive(CREATE_CARD)) {
+            log.info("Creating new card");
            Card createdCard = cardService.createCard();
            return new ResponseEntity<>(createdCard, HttpStatus.CREATED);
 //       }
